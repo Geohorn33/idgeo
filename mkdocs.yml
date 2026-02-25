@@ -1,0 +1,57 @@
+
+site_name: "Chef de projet géomatique – IDGEO"
+site_description: "Documentation personnelle – SIG, Qualité des données, Juridique, Projets"
+site_author: "Abdoulhakim Elmi"
+repo_url: "https://github.com/Geohorn33/idgeo"
+repo_name: "GitHub"
+
+copyright: "© 2026 Abdoulhakim Elmi – IDGEO"
+
+theme:
+  name: material
+
+  logo: images/idg.jpg        # optionnel
+  favicon: images/idggico  # optionnel
+
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Mode sombre
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/white-balance-sunny
+        name: Mode clair
+
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      linenums: true
+  - toc:
+      permalink: true
+
+nav:
+  - 🏠 Accueil: index.md
+
+  - 📘 Métadonnées : meta.md
