@@ -3,4 +3,5 @@
 Bienvenue sur mon espace de prise de notes. 
 
 - [métadonnées](./meta.md)
-- [resmue](resum.md)
+- [resmue]./(resum.md)
+- [etdue des cas](./edc.md)
