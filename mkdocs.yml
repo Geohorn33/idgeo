@@ -61,3 +61,4 @@ markdown_extensions:
 nav:
     - Accueil: index.md
     - Métadonnées: meta.md
+    - Etude des cas : edc.md
