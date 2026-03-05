@@ -13,26 +13,26 @@
       
       
       
+        <link rel="prev" href="../meta/">
       
-        <link rel="next" href="meta/">
       
       
         
       
       
-      <link rel="icon" href="images/idg.ico">
+      <link rel="icon" href="../images/idg.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
-        <title>CPGEOM</title>
+        <title>Etude des cas - CPGEOM</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mes-notes-de-cours-idgeo" class="md-skip">
+        <a href="#etude-des-cas-bdd" class="md-skip">
           Aller au contenu
         </a>
       
@@ -92,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="." title="CPGEOM" class="md-header__button md-logo" aria-label="CPGEOM" data-md-component="logo">
+    <a href=".." title="CPGEOM" class="md-header__button md-logo" aria-label="CPGEOM" data-md-component="logo">
       
-  <img src="images/idg.jpg" alt="logo">
+  <img src="../images/idg.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Accueil
+              Etude des cas
             
           </span>
         </div>
@@ -232,9 +232,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="CPGEOM" class="md-nav__button md-logo" aria-label="CPGEOM" data-md-component="logo">
+    <a href=".." title="CPGEOM" class="md-nav__button md-logo" aria-label="CPGEOM" data-md-component="logo">
       
-  <img src="images/idg.jpg" alt="logo">
+  <img src="../images/idg.jpg" alt="logo">
 
     </a>
     CPGEOM
@@ -258,19 +258,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -286,7 +277,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -298,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="meta/" class="md-nav__link">
+      <a href="../meta/" class="md-nav__link">
         
   
   
@@ -322,10 +312,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="edc/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -341,6 +340,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -383,12 +383,122 @@
   
 
 
-<h1 id="mes-notes-de-cours-idgeo">Mes notes de cours IDGEO<a class="headerlink" href="#mes-notes-de-cours-idgeo" title="Permanent link">&para;</a></h1>
-<p>Bienvenue sur mon espace de prise de notes. </p>
+<h1 id="etude-des-cas-bdd">Étude des cas BDD<a class="headerlink" href="#etude-des-cas-bdd" title="Permanent link">&para;</a></h1>
+<h1 id="i-presentation-du-projet">I. Présentation du projet<a class="headerlink" href="#i-presentation-du-projet" title="Permanent link">&para;</a></h1>
+<h2 id="1-commande">1. Commande<a class="headerlink" href="#1-commande" title="Permanent link">&para;</a></h2>
+<p>L’agglomération de Losse-en-Gelaisse possède une base de données d’accessibilité créée pour répondre aux obligations de la Loi d’Orientation des Mobilités (LOM). Elle est stockée sous PostgreSQL/PostGIS et suit le modèle CNIG, couvrant la voirie et un rayon de 200 m autour des arrêts prioritaires.</p>
+<p>La collectivité souhaite désormais mieux exploiter et fiabiliser ces données. La mission confiée au prestataire repose sur deux volets :</p>
 <ul>
-<li><a href="meta/">métadonnées</a></li>
-<li><a href="resum/">resmue</a></li>
-<li><a href="edc/">etdue des cas</a></li>
+<li>Outil web d’analyse de l’accessibilité  </li>
+<li>Méthodologie de contrôle qualité  </li>
+</ul>
+<hr />
+<h2 id="2-perimetre-de-travail">2. Périmètre de travail<a class="headerlink" href="#2-perimetre-de-travail" title="Permanent link">&para;</a></h2>
+<p>L’étude s’inscrit dans le cadre des obligations liées à la Loi d’Orientation des Mobilités (LOM) et couvre l’intégralité du territoire de l’agglomération de Losse-en-Gelaisse.</p>
+<p>Le projet inclut deux objectifs principaux :</p>
+<h3 id="developpement-dun-outil-web-open-source">Développement d’un outil web open source<a class="headerlink" href="#developpement-dun-outil-web-open-source" title="Permanent link">&para;</a></h3>
+<p>Conception d’une solution d’analyse de l’accessibilité incluant :
+- Cartographies thématiques<br />
+- Backoffice de gestion des comptes et des droits<br />
+- Interface responsive (Web et Mobile)  </p>
+<h3 id="methodologie-et-outils-de-controle-des-donnees">Méthodologie et outils de contrôle des données<a class="headerlink" href="#methodologie-et-outils-de-controle-des-donnees" title="Permanent link">&para;</a></h3>
+<p>Mise au point d’outils pour vérifier la conformité des données externes :
+- Télédétection<br />
+- LIDAR<br />
+- Modèles Numériques de Terrain (MNT)  </p>
+<h3 id="hors-perimetre">Hors périmètre<a class="headerlink" href="#hors-perimetre" title="Permanent link">&para;</a></h3>
+<p>Le projet ne couvre pas :
+- Les données « indoor » (ERP et cheminements internes)<br />
+- La collecte initiale des données (réalisée par un prestataire tiers)<br />
+- L’assistance, la maintenance et la mise à jour au-delà de la durée contractuelle  </p>
+<hr />
+<h2 id="3-analyse-des-besoins">3. Analyse des besoins<a class="headerlink" href="#3-analyse-des-besoins" title="Permanent link">&para;</a></h2>
+<p>L’analyse des besoins se divise en trois catégories :</p>
+<h3 id="a-besoins-fonctionnels-outil-web-danalyse">a. Besoins fonctionnels : Outil web d’analyse<a class="headerlink" href="#a-besoins-fonctionnels-outil-web-danalyse" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Aide à la décision</strong> : Identifier les zones prioritaires d’intervention en croisant accessibilité réelle, offre de transport (arrêts) et densité de population.  </li>
+<li><strong>Communication et concertation</strong> : Générer des cartographies thématiques exportables pour les réunions avec les associations PMR.  </li>
+<li><strong>Suivi temporel</strong> : Visualiser l’impact des chantiers via la gestion des zones de travaux sur une période donnée.  </li>
+<li><strong>Accessibilité numérique</strong> : Garantir la conformité RGAA (&gt; 85 %) et l’accessibilité universelle de l’outil.  </li>
+</ul>
+<h3 id="b-besoins-techniques-controle-qualite">b. Besoins techniques : Contrôle qualité<a class="headerlink" href="#b-besoins-techniques-controle-qualite" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Standardisation</strong> : Automatiser la vérification de conformité au standard CNIG Accessibilité.  </li>
+<li><strong>Fiabilisation des données</strong> : Détecter les anomalies (ex. passages piétons manquants, erreurs de saisie).  </li>
+<li><strong>Précision topographique</strong> : Vérifier pentes et dévers via LIDAR et/ou MNT.  </li>
+</ul>
+<h3 id="c-besoins-dadministration-et-de-gouvernance">c. Besoins d’administration et de gouvernance<a class="headerlink" href="#c-besoins-dadministration-et-de-gouvernance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Interopérabilité</strong> : Utilisation exclusive de solutions open source.  </li>
+<li><strong>Transparence et traçabilité</strong> : Documentation via métadonnées conformes à la directive INSPIRE.  </li>
+</ul>
+<hr />
+<h2 id="4-deroulement-de-la-prestation">4. Déroulement de la prestation<a class="headerlink" href="#4-deroulement-de-la-prestation" title="Permanent link">&para;</a></h2>
+<p>Le projet est structuré en plusieurs phases :</p>
+<h3 id="phase-1-analyse-des-donnees-existantes">Phase 1 : Analyse des données existantes<a class="headerlink" href="#phase-1-analyse-des-donnees-existantes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Étude du MCD CNIG Accessibilité  </li>
+<li>Compréhension de la structure actuelle  </li>
+</ul>
+<h3 id="phase-2-structuration-et-modelisation">Phase 2 : Structuration et modélisation<a class="headerlink" href="#phase-2-structuration-et-modelisation" title="Permanent link">&para;</a></h3>
+<p>Proposition d’un schéma organisé en sous-ensembles :
+- Schéma Accessibilité<br />
+- Schéma Travaux<br />
+- Schéma Transport (GTFS – complémentaire)  </p>
+<h3 id="phase-3-analyse-qualite">Phase 3 : Analyse qualité<a class="headerlink" href="#phase-3-analyse-qualite" title="Permanent link">&para;</a></h3>
+<p>Application des principes de la norme ISO 19157 :
+- Cohérence logique<br />
+- Exhaustivité<br />
+- Précision thématique<br />
+- Précision de position<br />
+- Qualité temporelle  </p>
+<hr />
+<h1 id="ii-etude-des-sources-de-donnees-et-analyse-critique">II. Étude des sources de données et analyse critique<a class="headerlink" href="#ii-etude-des-sources-de-donnees-et-analyse-critique" title="Permanent link">&para;</a></h1>
+<hr />
+<h1 id="iii-contenu-de-la-base-de-donnees">III. Contenu de la base de données<a class="headerlink" href="#iii-contenu-de-la-base-de-donnees" title="Permanent link">&para;</a></h1>
+<h2 id="1-description-et-exigences-generales">1. Description et exigences générales<a class="headerlink" href="#1-description-et-exigences-generales" title="Permanent link">&para;</a></h2>
+<ul>
+<li>a. Présentation du contenu des données  </li>
+<li>b. Identifiants  </li>
+<li>c. Positionnement indirect  </li>
+<li>d. Modélisation géométrique  </li>
+<li>e. Topologie  </li>
+<li>f. Systèmes de référence  </li>
+<li>g. Modélisation temporelle  </li>
+</ul>
+<h2 id="2-modele-conceptuel-de-donnees-mcd">2. Modèle Conceptuel de Données (MCD)<a class="headerlink" href="#2-modele-conceptuel-de-donnees-mcd" title="Permanent link">&para;</a></h2>
+<hr />
+<h1 id="iv-qualite-des-donnees">IV. Qualité des données<a class="headerlink" href="#iv-qualite-des-donnees" title="Permanent link">&para;</a></h1>
+<hr />
+<h1 id="v-administration-et-cycle-de-vie-des-donnees">V. Administration et cycle de vie des données<a class="headerlink" href="#v-administration-et-cycle-de-vie-des-donnees" title="Permanent link">&para;</a></h1>
+<h2 id="a-cycle-de-vie-des-donnees">a. Cycle de vie des données<a class="headerlink" href="#a-cycle-de-vie-des-donnees" title="Permanent link">&para;</a></h2>
+<h2 id="b-gestion-des-utilisateurs">b. Gestion des utilisateurs<a class="headerlink" href="#b-gestion-des-utilisateurs" title="Permanent link">&para;</a></h2>
+<hr />
+<h1 id="vi-metadonnees">VI. Métadonnées<a class="headerlink" href="#vi-metadonnees" title="Permanent link">&para;</a></h1>
+<hr />
+<h1 id="vii-annexes">VII. Annexes<a class="headerlink" href="#vii-annexes" title="Permanent link">&para;</a></h1>
+<hr />
+<h1 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h1>
+<h2 id="plan-technique">Plan technique<a class="headerlink" href="#plan-technique" title="Permanent link">&para;</a></h2>
+<ul>
+<li>MCD conforme au standard CNIG Accessibilité  </li>
+<li>Accès complet administrateur à PostgreSQL  </li>
+</ul>
+<h2 id="plan-organisationnel">Plan organisationnel<a class="headerlink" href="#plan-organisationnel" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Collaboration avec les services SIG et Voirie  </li>
+<li>Définition d’un processus de validation à chaque phase  </li>
+</ul>
+<h2 id="plan-contractuel">Plan contractuel<a class="headerlink" href="#plan-contractuel" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Convention de mise à disposition des données  </li>
+<li>Description des méthodes d’administration et de gestion des métadonnées  </li>
+</ul>
+<h2 id="securite-et-qualite">Sécurité et qualité<a class="headerlink" href="#securite-et-qualite" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Respect du RGPD  </li>
+<li>Plan de sauvegarde et de restauration  </li>
+<li>Objectif de conformité ISO 19115  </li>
 </ul>
 
 
@@ -449,10 +559,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

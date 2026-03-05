@@ -14,25 +14,23 @@
       
       
       
-        <link rel="next" href="meta/">
-      
       
         
       
       
-      <link rel="icon" href="images/idg.ico">
+      <link rel="icon" href="../images/idg.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
-        <title>CPGEOM</title>
+        <title>OGR GDAL - CPGEOM</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mes-notes-de-cours-idgeo" class="md-skip">
+        <a href="#ogr-gdal" class="md-skip">
           Aller au contenu
         </a>
       
@@ -92,9 +90,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="." title="CPGEOM" class="md-header__button md-logo" aria-label="CPGEOM" data-md-component="logo">
+    <a href=".." title="CPGEOM" class="md-header__button md-logo" aria-label="CPGEOM" data-md-component="logo">
       
-  <img src="images/idg.jpg" alt="logo">
+  <img src="../images/idg.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Accueil
+              OGR GDAL
             
           </span>
         </div>
@@ -232,9 +230,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="CPGEOM" class="md-nav__button md-logo" aria-label="CPGEOM" data-md-component="logo">
+    <a href=".." title="CPGEOM" class="md-nav__button md-logo" aria-label="CPGEOM" data-md-component="logo">
       
-  <img src="images/idg.jpg" alt="logo">
+  <img src="../images/idg.jpg" alt="logo">
 
     </a>
     CPGEOM
@@ -258,19 +256,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -286,7 +275,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -298,7 +286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="meta/" class="md-nav__link">
+      <a href="../meta/" class="md-nav__link">
         
   
   
@@ -325,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="edc/" class="md-nav__link">
+      <a href="../edc/" class="md-nav__link">
         
   
   
@@ -383,13 +371,19 @@
   
 
 
-<h1 id="mes-notes-de-cours-idgeo">Mes notes de cours IDGEO<a class="headerlink" href="#mes-notes-de-cours-idgeo" title="Permanent link">&para;</a></h1>
-<p>Bienvenue sur mon espace de prise de notes. </p>
-<ul>
-<li><a href="meta/">métadonnées</a></li>
-<li><a href="resum/">resmue</a></li>
-<li><a href="edc/">etdue des cas</a></li>
-</ul>
+<h1 id="ogr-gdal">OGR GDAL<a class="headerlink" href="#ogr-gdal" title="Permanent link">&para;</a></h1>
+<p>De quoi s'agit-il ?
+Définition</p>
+<p>GDAL (Geospatial Data Abstraction Library) est une bibliothèque libre permettant de lire et de traiter un très grand nombre de format d'images géographiques (notamment GeoTIFF et ECW) depuis des langages de programmation tels que C, C++, C sharp / .Net, Java, Ruby, VB6, Perl, Python, ou encore le langage statistique R.</p>
+<p>Un sous-ensemble de cette bibliothèque est la bibliothèque OGR permettant d'accéder à la plupart des formats courants de données vectorielles (à l'exception notable d'AutoCAD).</p>
+<p>La version binaire inclut de nombreux utilitaires de conversion et de transformation et de reprojection pour traiter directement les photos ou les vecteurs.</p>
+<p>GDAL/OGR fait partie des projets de la Fondation Open Source Geospatial.</p>
+<p>Cette bibliothèque est un des piliers des systèmes d'informations géographique libres, car elle permet d'assurer la compatibilité avec de nombreux systèmes commerciaux reposant sur des formats propriétaires tout autant que sur les normes de l'Open Geospatial Consortium.</p>
+<p>(Définition Wikipédia)</p>
+<p>Un site internet : https://gdal.org/</p>
+<p>Une licence Open Source : X/MIT style Open Source License by the OSGeo Foundation</p>
+<p>Un projet github (code libre) : https://github.com/OSGeo/gdal/</p>
+<p>Pour la petite histoire, un des principaux développeur / contributeur à ce projet Open Source est un français Even Rouault</p>
 
 
 
@@ -449,10 +443,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
