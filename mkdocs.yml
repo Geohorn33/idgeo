@@ -1,5 +1,5 @@
 site_name: CPGEOM
-site_description: Documentation personnelle – SIG, Qualité des données, Juridique et Projets
+site_description: Documentation personnelle – SIG
 site_author: Abdoulhakim Elmi
 site_url: ""
 repo_url: https://github.com/Geohorn33/idgeo
@@ -7,58 +7,12 @@ repo_name: GitHub
 
 copyright: "© 2026 Abdoulhakim Elmi"
 
-theme:
-    name: material
-    language: fr
-
-    palette:
-        - scheme: default
-          toggle:
-              icon: material/toggle-switch-off-outline
-              name: Passer en mode sombre
-        - scheme: slate
-          primary: indigo
-          accent: indigo
-          toggle:
-              icon: material/toggle-switch
-              name: Passer en mode clair
-
-    icon:
-        repo: fontawesome/brands/github
-
-    logo: images/idg.jpg
-    favicon: images/idg.ico
-
-    features:
-        - navigation.instant
-        - navigation.tracking
-        - navigation.top
-        - search.highlight
-        - search.share
-        - content.code.copy
-
-    font:
-        text: Google Sans
-        code: Roboto Mono
-
-plugins:
-    - search
-    
-markdown_extensions:
-    - admonition
-    - abbr
-    - attr_list
-    - def_list
-    - footnotes
-    - meta
-    - md_in_html
-    - pymdownx.superfences
-    - pymdownx.highlight:
-          linenums: true
-    - toc:
-          permalink: true
+theme : 
+  name : readthedocs
 
 nav:
     - Accueil: index.md
     - Métadonnées: meta.md
     - Etude des cas : edc.md
+    - Administration BDD : admi.md
+    - cas pratique Adm BDD : pra.md
