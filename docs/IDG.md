@@ -35,7 +35,7 @@ Objectif :
 
 ## Approches des IDG
 
-Approche par composantes
+**Approche par composantes** 
 Décrit les éléments techniques :
 - données
 - métadonnées
@@ -43,7 +43,7 @@ Décrit les éléments techniques :
 - logiciels
 - acteurs
 
-Approche réseau :
+**Approche réseau** :
 
 Considère l’IDG comme **un réseau d’acteurs qui coopèrent pour partager les données**.
 
@@ -82,13 +82,13 @@ Exemples :
 
 ## Standards et Normes
 
-### Norme
+**Norme**
 Règle officielle définie par un organisme de normalisation.
 
 Exemple :
 - ISO
 
-### Standard
+**Standard**
 Spécification technique permettant l’interopérabilité.
 
 Exemples :
@@ -102,12 +102,12 @@ Exemples :
 
 Permet aux systèmes d’échanger des données.
 
-### Champ sémantique
+**Champ sémantique**
 Définit :
 - le sens
 - la structure des informations
 
-### Champ géographique
+**Champ géographique**
 Définit :
 - le système géodésique
 - la projection cartographique
@@ -116,7 +116,7 @@ Exemples :
 - WGS84
 - Lambert 93
 
-### Champ informatique
+**Champ informatique**
 Concerne les échanges entre systèmes :
 
 - protocoles réseau
@@ -143,13 +143,13 @@ Les données doivent être réutilisables.
 
 ## Solutions de diffusion de données
 
-### Solutions orientées géographiques
+**Solutions orientées géographiques** 
 - Prodige
 - GeoRechestra
 - Isogeo
 - OneGeoSuite
 
-### Plateformes Open Data
+**Plateformes Open Data**
 - Dataverse
 - CKAN
 - uData
@@ -160,15 +160,17 @@ Les données doivent être réutilisables.
 
 ## Approches techniques
 
-### SaaS
+**SaaS** :
+
 Solution hébergée dans le **cloud par un fournisseur**.
 
-### Hybride
+**Hybride** :
+
 Combinaison :
 - cloud
 - infrastructure interne
 
-### Auto-gérée
+**Auto-gérée** :
 
 -  Internalisation
 Infrastructure gérée **entièrement en interne**.
