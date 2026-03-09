@@ -35,7 +35,7 @@ Objectif :
 
 ## Approches des IDG
 
-## Approche par composantes
+### Approche par composantes
 Décrit les éléments techniques :
 - données
 - métadonnées
@@ -43,14 +43,14 @@ Décrit les éléments techniques :
 - logiciels
 - acteurs
 
-## Approche réseau
+# Approche réseau
 Considère l’IDG comme **un réseau d’acteurs qui coopèrent pour partager les données**.
 
 ---
 
-# Typologies des IDG
+## Typologies des IDG
 
-## IDG généraliste (territoriale)
+### IDG généraliste (territoriale)
 Diffuse des données **multi-thématiques liées à un territoire**.
 
 Exemples :
@@ -68,7 +68,7 @@ Exemples :
 
 ---
 
-# Services INSPIRE
+## Services INSPIRE
 
 - **Service de recherche** → trouver les données (CSW)
 - **Service de consultation** → visualiser les données (WMS)
@@ -78,15 +78,15 @@ Exemples :
 
 ---
 
-# Standards et Normes
+## Standards et Normes
 
-## Norme
+### Norme
 Règle officielle définie par un organisme de normalisation.
 
 Exemple :
 - ISO
 
-## Standard
+### Standard
 Spécification technique permettant l’interopérabilité.
 
 Exemples :
@@ -96,7 +96,7 @@ Exemples :
 
 ---
 
-# Interopérabilité
+## Interopérabilité
 
 Permet aux systèmes d’échanger des données.
 
@@ -123,7 +123,7 @@ Concerne les échanges entre systèmes :
 
 ---
 
-# Principes FAIR
+## Principes FAIR
 
 **F – Findable**  
 Les données doivent être faciles à trouver.
@@ -139,15 +139,15 @@ Les données doivent être réutilisables.
 
 ---
 
-# Solutions de diffusion de données
+## Solutions de diffusion de données
 
-## Solutions orientées géographiques
+### Solutions orientées géographiques
 - Prodige
 - GeoRechestra
 - Isogeo
 - OneGeoSuite
 
-## Plateformes Open Data
+### Plateformes Open Data
 - Dataverse
 - CKAN
 - uData
@@ -156,30 +156,30 @@ Les données doivent être réutilisables.
 
 ---
 
-# Approches techniques
+## Approches techniques
 
-## SaaS
+### SaaS
 Solution hébergée dans le **cloud par un fournisseur**.
 
-## Hybride
+### Hybride
 Combinaison :
 - cloud
 - infrastructure interne
 
-## Auto-gérée
+### Auto-gérée
 
-### Internalisation
+-  Internalisation
 Infrastructure gérée **entièrement en interne**.
 
-### Hébergement délégué
+- Hébergement délégué
 Serveur externe mais **gestion interne**.
 
-### Externalisation
+-  Externalisation
 Le prestataire **gère toute l’infrastructure**.
 
 ---
 
-# Gestion des accès
+## Gestion des accès
 
 Définir :
 - qui peut **consulter**
@@ -188,7 +188,7 @@ Définir :
 
 ---
 
-# Cycle de vie PDCA
+## Cycle de vie PDCA
 
 - **Plan** → planifier
 - **Do** → réaliser
@@ -197,7 +197,7 @@ Définir :
 
 ---
 
-# Analyse des risques
+## Analyse des risques
 
 1. identifier les risques
 2. analyser les risques
@@ -206,7 +206,7 @@ Définir :
 
 ---
 
-# Méthode QQOQCP
+## Méthode QQOQCP
 
 - Qui ?
 - Quoi ?
@@ -219,7 +219,7 @@ Permet **d’identifier un besoin**.
 
 ---
 
-# Étapes pour répondre à un besoin
+## Étapes pour répondre à un besoin
 
 1. identifier le besoin
 2. analyser le besoin
@@ -230,7 +230,7 @@ Permet **d’identifier un besoin**.
 
 ---
 
-# Système d’Information (SI)
+## Système d’Information (SI)
 
 Le SI repose sur :
 - **structuration des données**
@@ -240,7 +240,7 @@ Le SI repose sur :
 
 ---
 
-# Formation et sensibilisation
+## Formation et sensibilisation
 
 Permet de :
 - former les utilisateurs
