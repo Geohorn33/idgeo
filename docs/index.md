@@ -8,3 +8,4 @@ Bienvenue sur mon espace de prise de notes.
 - [Administration BDD](./admi.md)
 - [cas pratique Adm BDD](./pra.md)
 - [Exo correction](./exorole.md)
+- [IDG infractructure des données géographique](./IDG.md)

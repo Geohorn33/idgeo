@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Abdoulhakim Elmi" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Administration BDD - CPGEOM</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Administration BDD";
+        var mkdocs_page_input_path = "admi.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> CPGEOM
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../meta/">Métadonnées</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../edc/">Etude des cas</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Administration BDD</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#objectifs-de-la-sequence">Objectifs de la séquence</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pra/">cas pratique Adm BDD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../exorole/">Exo correction</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CPGEOM</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Administration BDD</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="administrer-son-serveur-de-bases-de-donnees">Administrer son serveur de bases de données</h1>
+<h2 id="objectifs-de-la-sequence">Objectifs de la séquence</h2>
+<p>L’objectif est d’assurer :</p>
+<ul>
+<li>la <strong>pérennité des données</strong></li>
+<li>la <strong>cohérence des données</strong></li>
+<li>la <strong>sécurité et la performance du serveur de bases de données</strong></li>
+</ul>
+<hr />
+<h1 id="concept-general-de-ladministration">Concept général de l'administration</h1>
+<p>L’administration d’un système de bases de données nécessite de distinguer :</p>
+<ul>
+<li>la <strong>gestion du serveur</strong></li>
+<li>la <strong>gestion des bases de données</strong></li>
+</ul>
+<p>Elle implique plusieurs aspects :</p>
+<ul>
+<li>les métiers autour des bases de données</li>
+<li>le système d’exploitation du serveur</li>
+<li>la gestion d’une base <strong>de développement</strong> et d’une base <strong>de production</strong></li>
+</ul>
+<hr />
+<h1 id="etapes-de-creation-dun-systeme-de-base-de-donnees">Étapes de création d’un système de base de données</h1>
+<ol>
+<li>Établir les caractéristiques de la base  </li>
+<li>Évaluer le matériel serveur  </li>
+<li>Installer PostgreSQL / PostGIS  </li>
+<li>Créer et ouvrir la base de données  </li>
+<li>Mettre en place la sauvegarde  </li>
+<li>Créer et gérer les utilisateurs et leurs droits  </li>
+<li>Implémenter la structure de la base  </li>
+<li>Sauvegarder la base fonctionnelle  </li>
+<li>Optimiser les performances</li>
+</ol>
+<hr />
+<h1 id="architecture-et-arborescence-postgresql">Architecture et arborescence PostgreSQL</h1>
+<p>Une installation PostgreSQL contient plusieurs éléments :</p>
+<ul>
+<li><strong>data</strong> → stockage des données</li>
+<li><strong>configuration</strong> → fichiers de configuration</li>
+<li><strong>binaires</strong> → programmes exécutables</li>
+</ul>
+<hr />
+<h1 id="focus-sur-les-tablespaces">Focus sur les tablespaces</h1>
+<p>Les <strong>tablespaces</strong> permettent de définir un emplacement physique sur le disque pour stocker les données.</p>
+<p>Ils permettent :</p>
+<ul>
+<li>d’organiser le stockage</li>
+<li>d’améliorer les performances</li>
+<li>de répartir les données sur plusieurs disques</li>
+</ul>
+<hr />
+<h1 id="le-role-du-dba-database-administrator">Le rôle du DBA (Database Administrator)</h1>
+<p>Le DBA est responsable de :</p>
+<ul>
+<li>la gestion des droits utilisateurs</li>
+<li>la gestion des tablespaces</li>
+<li>la gestion de l’espace disque</li>
+<li>l’identification des tables critiques</li>
+<li>la gestion des sauvegardes</li>
+<li>la performance et la disponibilité de la base</li>
+</ul>
+<hr />
+<h1 id="manipulations-courantes">Manipulations courantes</h1>
+<p>L’administration PostgreSQL comprend notamment :</p>
+<ul>
+<li>optimisation du serveur avec <strong>PGTune</strong></li>
+<li>gestion des <strong>tablespaces</strong></li>
+<li>création de bases de données</li>
+<li>création de bases <strong>template</strong></li>
+<li>création d’utilisateurs</li>
+<li>création de tables</li>
+<li>création d’index</li>
+<li>affectation des objets aux tablespaces</li>
+</ul>
+<hr />
+<h1 id="concept-dadministration-difference-entre-sg-et-db">Concept d'administration : différence entre SG et DB</h1>
+<h2 id="composants-dune-base-de-donnees-db">Composants d’une base de données (DB)</h2>
+<p>Une base de données contient :</p>
+<ul>
+<li>les <strong>modèles de données</strong> (MCD, MLD, MPD)</li>
+<li>les <strong>schémas</strong></li>
+<li>les <strong>tables et données</strong></li>
+<li>les <strong>applications clientes</strong></li>
+<li>les <strong>utilisateurs (roles)</strong></li>
+<li>les <strong>requêtes SQL</strong></li>
+<li>les <strong>index</strong></li>
+</ul>
+<hr />
+<h2 id="composants-du-systeme-de-gestion-sg">Composants du système de gestion (SG)</h2>
+<p>Le système de gestion comprend :</p>
+<ul>
+<li>l’architecture du serveur</li>
+<li>le réseau</li>
+<li>le CPU</li>
+<li>la RAM</li>
+<li>le stockage</li>
+<li>le système d’exploitation</li>
+</ul>
+<hr />
+<h1 id="les-metiers-autour-de-la-base-de-donnees">Les métiers autour de la base de données</h1>
+<p>Selon la taille de l’entreprise, plusieurs rôles existent :</p>
+<ul>
+<li><strong>Administrateur système (SI)</strong></li>
+<li><strong>Administrateur de base de données (DBA)</strong></li>
+<li><strong>Développeur d’application</strong></li>
+<li><strong>Utilisateur</strong></li>
+</ul>
+<hr />
+<h1 id="systeme-dexploitation-du-serveur">Système d'exploitation du serveur</h1>
+<p>PostgreSQL peut être installé sur :</p>
+<ul>
+<li><strong>Linux</strong></li>
+<li><strong>Windows</strong></li>
+</ul>
+<p>Téléchargement :</p>
+<p>https://www.postgresql.org/download/</p>
+<p>Linux (Debian / Ubuntu) :</p>
+<p>https://www.postgresql.org/download/linux/ubuntu/</p>
+<p>Windows :</p>
+<p>https://www.postgresql.org/download/windows/</p>
+<hr />
+<h1 id="base-de-developpement-et-base-de-production">Base de développement et base de production</h1>
+<h2 id="base-de-developpement-dev">Base de développement (DEV)</h2>
+<p>Le serveur de développement permet :</p>
+<ul>
+<li>de tester les fonctionnalités</li>
+<li>de corriger les erreurs</li>
+<li>d’expérimenter sans risque</li>
+</ul>
+<p>Caractéristiques :</p>
+<ul>
+<li>données simplifiées</li>
+<li>environnement isolé</li>
+<li>travail collaboratif</li>
+</ul>
+<hr />
+<h2 id="base-de-production-prod">Base de production (PROD)</h2>
+<p>La base de production est l’environnement réel utilisé par les utilisateurs.</p>
+<p>Avant la production, on utilise souvent un serveur :</p>
+<p><strong>préproduction (staging)</strong></p>
+<p>Il permet de :</p>
+<ul>
+<li>tester dans un environnement réel</li>
+<li>détecter les bugs</li>
+<li>valider les mises à jour</li>
+</ul>
+<hr />
+<h1 id="etapes-detaillees-de-creation-dune-base">Étapes détaillées de création d’une base</h1>
+<h2 id="1-etablir-les-caracteristiques">1. Établir les caractéristiques</h2>
+<p>Déterminer les objectifs de la base.</p>
+<p>Exemple pour un géomaticien :</p>
+<ul>
+<li>stockage de données <strong>spatiales</strong></li>
+</ul>
+<hr />
+<h2 id="2-evaluation-du-materiel-serveur">2. Évaluation du matériel serveur</h2>
+<p>Cela dépend :</p>
+<ul>
+<li>du volume de données</li>
+<li>du nombre d’utilisateurs</li>
+<li>du type de données</li>
+</ul>
+<p>Exemple :</p>
+<ul>
+<li>images satellites</li>
+<li>couches vectorielles</li>
+</ul>
+<hr />
+<h2 id="3-installation-postgresql">3. Installation PostgreSQL</h2>
+<p>Selon le système :</p>
+<ul>
+<li>installation via packages</li>
+<li>compilation des sources</li>
+</ul>
+<p>Clients possibles :</p>
+<ul>
+<li><strong>psql</strong></li>
+<li><strong>pgAdmin</strong></li>
+<li><strong>DBeaver</strong></li>
+<li><strong>QGIS</strong></li>
+<li><strong>applications web</strong></li>
+</ul>
+<hr />
+<h2 id="4-creation-de-la-base">4. Création de la base</h2>
+<p>PostgreSQL utilise un <strong>cluster</strong>.</p>
+<p>Un cluster est l’ensemble des bases stockées dans un dossier.</p>
+<p>Exemple :</p>
+<pre><code>/var/lib/postgresql/16/main
+</code></pre>
+<p>Les tablespaces permettent ensuite d’organiser le stockage.</p>
+<hr />
+<h2 id="5-strategie-de-sauvegarde">5. Stratégie de sauvegarde</h2>
+<p>Deux types :</p>
+<h3 id="sauvegarde-manuelle">Sauvegarde manuelle</h3>
+<p>avec :</p>
+<pre><code>pg_dump
+</code></pre>
+<h3 id="sauvegarde-automatisee">Sauvegarde automatisée</h3>
+<p>avec des scripts.</p>
+<hr />
+<h2 id="wal-write-ahead-log">WAL (Write Ahead Log)</h2>
+<p>Les transactions sont enregistrées dans les <strong>WAL</strong>.</p>
+<p>Ils contiennent :</p>
+<ul>
+<li>l’historique des opérations</li>
+<li>les modifications des données</li>
+</ul>
+<p>Ils garantissent :</p>
+<ul>
+<li>la cohérence</li>
+<li>la récupération après crash</li>
+</ul>
+<hr />
+<h2 id="6-gestion-des-utilisateurs">6. Gestion des utilisateurs</h2>
+<p>Création d’utilisateurs :</p>
+<pre><code class="language-sql">CREATE ROLE
+CREATE USER
+</code></pre>
+<p>Le nombre maximal de connexions est défini dans :</p>
+<pre><code>postgresql.conf
+</code></pre>
+<hr />
+<h2 id="7-implementation-de-la-base">7. Implémentation de la base</h2>
+<p>Cela comprend :</p>
+<ul>
+<li>modification de la structure</li>
+<li>ajout de données</li>
+<li>suppression de données</li>
+</ul>
+<p>Ces opérations doivent être testées avant la mise en production.</p>
+<hr />
+<h2 id="8-sauvegarde-automatique">8. Sauvegarde automatique</h2>
+<p>Une base en production doit être sauvegardée automatiquement.</p>
+<p>Exemples :</p>
+<p>https://github.com/DiouxX/script_backup_postgresql</p>
+<p>http://nils.hamerlinck.fr/blog/2015/05/04/backup-automatique-base-postgresql/</p>
+<hr />
+<h2 id="9-optimisation-des-performances">9. Optimisation des performances</h2>
+<p>Optimisation PostgreSQL :</p>
+<ul>
+<li>mémoire</li>
+<li>index</li>
+<li>parallélisme</li>
+<li>tablespaces</li>
+</ul>
+<p>Outil :</p>
+<p><strong>PGTune</strong></p>
+<p>https://pgtune.leopard.in.ua/</p>
+<hr />
+<h1 id="fichiers-importants-postgresql">Fichiers importants PostgreSQL</h1>
+<h2 id="oid">OID</h2>
+<p>Chaque objet PostgreSQL possède un identifiant <strong>OID</strong>.</p>
+<p>Les données sont stockées dans :</p>
+<pre><code>C:\Program Files\PostgreSQL\17\data\base
+</code></pre>
+<hr />
+<h2 id="pg_hbaconf">pg_hba.conf</h2>
+<p>Ce fichier gère :</p>
+<ul>
+<li>l’authentification</li>
+<li>les connexions utilisateurs</li>
+<li>les machines autorisées</li>
+</ul>
+<p>Exemple :</p>
+<pre><code>192.168.1.10/32
+</code></pre>
+<hr />
+<h2 id="postgresqlconf">postgresql.conf</h2>
+<p>Fichier principal de configuration.</p>
+<p>Il permet de configurer :</p>
+<ul>
+<li>les performances</li>
+<li>la mémoire</li>
+<li>les connexions</li>
+<li>la sécurité du serveur</li>
+</ul>
+<hr />
+<hr />
+<p>binaire c serveur interne </p>
+<h1 id="les-principaux-binaires-de-postgresql">Les principaux binaires de PostgreSQL</h1>
+<p>pg_ctl (réalisé par les installateurs comme systemD ou celui de windows)</p>
+<pre><code>gestion de l'instance / cluster
+
+start / stop / kill
+
+init : création autre espace de datas
+
+promote : promotion de standby
+</code></pre>
+<h1 id="psql">psql</h1>
+<pre><code>le premier client de connexion en mode CLI
+
+on se connecte avec un utilisateur à une base de donnée
+
+on peux exécuter du SQL et des méta-commandes, ou des script sql (fichiers)
+</code></pre>
+<h1 id="exemple">Exemple</h1>
+<h1 id="pg_createcluster">pg_createcluster</h1>
+<pre><code>création d'une instance PG
+
+Création des répertoires (/etc et /var/lib)
+</code></pre>
+<p>Accompagné de pg_dropcluster (suppression de cluster), pg_lscluster (lister), pg_ctlcluster (contrôleur du cluster)</p>
+<h1 id="les-binaires-pour-la-sauvegarde-postgresql">Les binaires pour la sauvegarde (PostgreSQL)</h1>
+<p>PostgreSQL fournit plusieurs <strong>outils binaires</strong> permettant de sauvegarder, restaurer et maintenir une base de données.</p>
+<hr />
+<h1 id="pg_dump">pg_dump</h1>
+<p>Outil utilisé pour <strong>sauvegarder une base de données</strong>.</p>
+<p>Caractéristiques :</p>
+<ul>
+<li>sauvegarde d'une <strong>base spécifique</strong></li>
+<li>plusieurs <strong>formats de sortie</strong></li>
+<li>possibilité de sauvegarder <strong>table, schéma ou base complète</strong></li>
+</ul>
+<p>Formats possibles :</p>
+<ul>
+<li><strong>plain text</strong> → script SQL lisible</li>
+<li><strong>custom / binaire</strong> → format spécifique PostgreSQL</li>
+<li><strong>compressé</strong></li>
+</ul>
+<h3 id="exemple-sauvegarder-une-base-en-sql">Exemple : sauvegarder une base en SQL</h3>
+<pre><code>pg_dump -U postgres -d ma_base &gt; sauvegarde.sql
+</code></pre>
+<h3 id="exemple-sauvegarde-en-format-compresse">Exemple : sauvegarde en format compressé</h3>
+<pre><code>pg_dump -U postgres -Fc ma_base &gt; sauvegarde.dump
+</code></pre>
+<h3 id="exemple-sauvegarder-une-seule-table">Exemple : sauvegarder une seule table</h3>
+<pre><code>pg_dump -U postgres -t ma_table ma_base &gt; table.sql
+</code></pre>
+<hr />
+<h1 id="pg_dumpall">pg_dumpall</h1>
+<p>Outil permettant de <strong>sauvegarder l'ensemble du serveur PostgreSQL</strong>.</p>
+<p>Il sauvegarde :</p>
+<ul>
+<li>toutes les bases</li>
+<li>les utilisateurs (roles)</li>
+<li>les permissions</li>
+</ul>
+<h3 id="exemple_1">Exemple</h3>
+<pre><code>pg_dumpall -U postgres &gt; sauvegarde_complete.sql
+</code></pre>
+<hr />
+<h1 id="pg_restore">pg_restore</h1>
+<p>Permet de <strong>restaurer une base sauvegardée avec pg_dump</strong> (format custom ou binaire).</p>
+<h3 id="exemple-restauration">Exemple : restauration</h3>
+<pre><code>pg_restore -U postgres -d ma_base sauvegarde.dump
+</code></pre>
+<h3 id="exemple-avec-creation-automatique-de-la-base">Exemple avec création automatique de la base</h3>
+<pre><code>pg_restore -U postgres -C -d postgres sauvegarde.dump
+</code></pre>
+<hr />
+<h1 id="wrappers-raccourcis-postgresql">Wrappers (raccourcis PostgreSQL)</h1>
+<p>Ce sont des <strong>commandes simplifiées</strong> pour gérer les bases et utilisateurs.</p>
+<h3 id="createdb">createdb</h3>
+<p>Créer une base de données</p>
+<pre><code>createdb ma_base
+</code></pre>
+<h3 id="dropdb">dropdb</h3>
+<p>Supprimer une base</p>
+<pre><code>dropdb ma_base
+</code></pre>
+<h3 id="createuser">createuser</h3>
+<p>Créer un utilisateur</p>
+<pre><code>createuser mon_user
+</code></pre>
+<h3 id="dropuser">dropuser</h3>
+<p>Supprimer un utilisateur</p>
+<pre><code>dropuser mon_user
+</code></pre>
+<hr />
+<h1 id="maintenance">Maintenance</h1>
+<p>PostgreSQL propose plusieurs outils de maintenance.</p>
+<h3 id="reindexdb">reindexdb</h3>
+<p>Permet de <strong>reconstruire les index</strong> pour améliorer les performances.</p>
+<pre><code>reindexdb ma_base
+</code></pre>
+<h3 id="vacuumdb">vacuumdb</h3>
+<p>Permet de <strong>nettoyer la base de données</strong> et libérer l’espace disque.</p>
+<pre><code>vacuumdb ma_base
+</code></pre>
+<p>Exemple complet :</p>
+<pre><code>vacuumdb -U postgres -d ma_base -f -z
+</code></pre>
+<hr />
+<h1 id="attention-outils-systeme-avances">Attention : outils système avancés</h1>
+<p>Ces commandes sont utilisées pour <strong>l'administration avancée du serveur</strong>.</p>
+<hr />
+<h2 id="pg_controldata">pg_controldata</h2>
+<p>Permet de <strong>vérifier l'état du cluster PostgreSQL</strong>.</p>
+<p>Il affiche :</p>
+<ul>
+<li>version PostgreSQL</li>
+<li>état du serveur</li>
+<li>informations WAL</li>
+</ul>
+<p>Exemple :</p>
+<pre><code>pg_controldata /var/lib/postgresql/16/main
+</code></pre>
+<hr />
+<h2 id="pg_resetwal">pg_resetwal</h2>
+<p>Permet de <strong>réinitialiser les journaux WAL en cas de crash</strong>.</p>
+<p>⚠️ Attention : peut entraîner <strong>une perte de données</strong>.</p>
+<p>Exemple :</p>
+<pre><code>pg_resetwal /var/lib/postgresql/16/main
+</code></pre>
+<hr />
+<h2 id="pg_receive_wal">pg_receive_wal</h2>
+<p>Permet de <strong>récupérer les WAL d'un serveur distant</strong> (réplication).</p>
+<p>Exemple :</p>
+<pre><code>pg_receivewal -h serveur -U postgres -D /backup/wal
+</code></pre>
+<hr />
+<h2 id="pg_basebackup">pg_basebackup</h2>
+<p>Permet de <strong>copier une base complète depuis un serveur PostgreSQL</strong>.</p>
+<p>Utilisé pour :</p>
+<ul>
+<li>réplication</li>
+<li>sauvegarde complète</li>
+</ul>
+<p>Exemple :</p>
+<pre><code>pg_basebackup -h serveur -U postgres -D /backup/base -Fp -Xs -P
+</code></pre>
+<p>Options :</p>
+<ul>
+<li><strong>-Fp</strong> → format plain</li>
+<li><strong>-Xs</strong> → inclure les WAL</li>
+<li><strong>-P</strong> → afficher la progression</li>
+</ul>
+<h1 id="administration-postgresql-pratique">Administration PostgreSQL – Pratique</h1>
+<p>Cette fiche présente les principales manipulations réalisées pour administrer un serveur <strong>PostgreSQL / PostGIS</strong> : connexion au serveur, création de base, configuration, gestion des tablespaces et sauvegarde des données.</p>
+<hr />
+<h1 id="les-controles-dacces">Les contrôles d'accès</h1>
+<p>Droits d'accès utilisateur</p>
+<p>PostgreSQL™ gère les droits d'accès aux bases de données en utilisant le concept de rôles. Un rôle peut être vu soit comme un utilisateur de la base de données, soit comme un groupe d'utilisateurs de la base de données, suivant la façon dont le rôle est configuré. Les rôles peuvent posséder des objets de la base de données (par exemple des tables et des fonctions) et peuvent affecter des droits sur ces objets à d'autres rôles pour contrôler qui a accès à ces objets.</p>
+<p>La création d'un utilisateur se fait par la commande CREATE ROLE ou avec l'interface de pgAdmin</p>
+<pre><code>CREATE ROLE nom_utilisateur LOGIN;
+</code></pre>
+<p>Les rôles sont communs à toutes les bases de données du serveur, autrement dit, les rôles sont définis au niveau du serveur et pas d'une base de données :</p>
+<p><img alt="" src="../images/rol.png" /></p>
+<h1 id="les-roles-de-groupe">Les rôles de groupe</h1>
+<p>Un rôle peut être défini comme rôle de groupe.</p>
+<p>Après l'avoir créé, on peut lui ajouter des membres avec la commande :</p>
+<pre><code>GRANT role_groupe TO role1,... ;
+</code></pre>
+<p>Les rôles membres qui ont l'attribut INHERIT peuvent utiliser automatiquement les droits des rôles dont ils sont membres, ceci incluant les droits hérités par ces rôles.</p>
+<p>L'attribut NOINHERIT enlève l'héritage.</p>
+<p>Par défaut, PostgreSQL™ donne à tous les rôles l'attribut INHERIT pour des raisons de compatibilité avec les versions précédant la 8.1 dans lesquelles les utilisateurs avaient toujours les droits des groupes dont ils étaient membres.</p>
+<p>Un rôle de groupe n'a pas besoin d'avoir un droit de connexion à la base (LOGIN), ce sont les utilisateurs de ce groupe qui se connectent.</p>
+<h2 id="attributs-des-roles">Attributs des rôles</h2>
+<p>droit de connexion</p>
+<p>Seuls les rôles disposant de l'attribut LOGIN peuvent se connecter à une base de données.</p>
+<p>statut de super-utilisateur</p>
+<p>Les super-utilisateurs ne sont pas pris en compte dans les vérifications des droits, sauf le droit de connexion ou d'initier la réplication.</p>
+<p>création de bases de données</p>
+<p>Les droits de création de bases doivent être explicitement données à un rôle (à l'exception des super-utilisateurs qui passent au travers de toute vérification de droits).</p>
+<p>création de rôle</p>
+<p>Un rôle doit se voir explicitement donné le droit de créer plus de rôles (sauf pour les super-utilisateurs vu qu'ils ne sont pas pris en compte lors des vérifications de droits).</p>
+<p>initier une réplication</p>
+<p>Un rôle doit se voir explicitement donné le droit d'initier une réplication en flux (sauf pour les super-utilisateurs, puisqu'ils ne sont pas soumis aux vérifications de permissions). Un rôle utilisé pour la réplication en flux doit avoir le droit LOGIN.</p>
+<p>mot de passe</p>
+<p>Le client doit fournir un mot de passe quand il se connecte à la base.</p>
+<h2 id="modification-dun-role">Modification d'un rôle</h2>
+<p>Les attributs d'un rôle peuvent être modifiés après sa création avec ALTER ROLE.</p>
+<h2 id="les-privileges-grant">Les privilèges (GRANT)</h2>
+<p>Un privilège est un droit sur un objet de la base attribué à un rôle.</p>
+<p>Les SGBD permettent généralement de spécifier assez finement les privilèges d'un utilisateur en fonction des objets manipulés :</p>
+<pre><code>base de données
+
+schéma
+
+table (relation)
+
+colonne (attribut)
+</code></pre>
+<p>Ainsi, un utilisateur peut se voir attribuer un privilège pour toute une base de données, le contenu d'un schéma, ou seulement pour quelques tables, ou encore sur uniquement quelques colonnes de certaines tables.</p>
+<h2 id="regles-dattribution-des-privileges">Règles d'attribution des privilèges</h2>
+<p>Règle n°0 : un mot de passe pour chacun</p>
+<p>Tous les utilisateurs (clients, applications) doivent avoir un mot de passe.</p>
+<p>Règle n°1 : attribution du moindre privilège.</p>
+<p>Les utilisateurs ne doivent avoir que le minimum de droits, ceux strictement nécessaires à l'accomplissement de leurs tâches. Les privilèges peuvent évoluer au cours du temps car les besoins et les tâches affectées ne sont pas immuables, mais à un moment donné, seuls les droits indispensables doivent être fournis à un utilisateur.</p>
+<p>Il faut éviter de créer plusieurs comptes avec des droits d'administrateur.</p>
+<p>Règle n°2 : contrôle de la population.</p>
+<p>Le personnel d'une entreprise bouge, il y a des départs, des arrivées, des promotions... Les privilèges doivent êtres synchrones avec la réalité de la population : il faut supprimer les comptes des utilisateurs quittant l'entreprise et de ceux n'étant plus affectés à telle ou telle tâche.</p>
+<p>Règle n°3 : supervision de la délégation des tâches d'administration.</p>
+<p>Un administrateur peut être amené à déléguer auprès d'une autre personne les tâches d'attribution des privilèges de tout ou partie de la population des utilisateurs (cf WITH GRANT OPTION). Un contrôle a posteriori doit être réalisé afin de vérifier que le résultat de cette délégation est conforme à la politique adoptée.</p>
+<p>Règle n°4 : contrôle physique des connexions.</p>
+<p>La connexion d'un utilisateur à une base de données peut être réalisée depuis n'importe où dans le monde grâce à Internet. Il est nécessaire de restreindre les connexions à des hôtes spécifiques connus (hba_conf).</p>
+<h2 id="les-principaux-privileges">Les principaux privilèges :</h2>
+<p>Les droits possibles sont :</p>
+<p>SELECT</p>
+<p>Autorise une sélection sur toutes les colonnes, ou sur les colonnes listées spécifiquement, de la table, vue ou séquence indiquée. Autorise aussi l'utilisation de COPY TO. De plus, ce droit est nécessaire pour référencer des valeurs de colonnes existantes avec UPDATE ou DELETE.</p>
+<p>INSERT</p>
+<p>Autorise une insertion d'une nouvelle ligne dans la table indiquée. Si des colonnes spécifiques sont listées, seules ces colonnes peuvent être affectées dans une commande INSERT, (les autres colonnes recevront par conséquent des valeurs par défaut). Autorise aussi COPY FROM.</p>
+<p>UPDATE</p>
+<p>Autorise une mise à jour sur toute colonne de la table spécifiée, ou sur les colonnes spécifiquement listées. (En fait, toute commande UPDATE nécessite aussi le droit SELECT car elle doit référencer les colonnes pour déterminer les lignes à mettre à jour et/ou calculer les nouvelles valeurs des colonnes.)</p>
+<p>DELETE</p>
+<p>Autorise la suppression d'une ligne sur la table indiquée. (En fait, toute commande DELETE nécessite aussi le droit SELECT car elle doit référencer les colonnes pour déterminer les lignes à supprimer.)</p>
+<p>TRUNCATE</p>
+<p>Autorise la suppression de tous les enregistrements de la table.</p>
+<p>REFERENCES</p>
+<p>Ce droit est requis sur les colonnes de référence et les colonnes qui référencent pour créer une contrainte de clé étrangère. Le droit peut être accordé pour toutes les colonnes, ou seulement des colonnes spécifiques.</p>
+<p>TRIGGER</p>
+<p>Autorise la création d'un déclencheur sur la table indiquée.</p>
+<p>CREATE</p>
+<p>Pour les bases de données, autorise la création de nouveaux schémas dans la base de données.</p>
+<p>Pour les schémas, autorise la création de nouveaux objets dans le schéma. Pour renommer un objet existant, il est nécessaire d'en être le propriétaire et de posséder ce droit sur le schéma qui le contient.</p>
+<p>Pour les tablespaces, autorise la création de tables, d'index et de fichiers temporaires dans le tablespace et autorise la création de bases de données utilisant ce tablespace par défaut. (Révoquer ce privilège ne modifie pas l'emplacement des objets existants.)</p>
+<p>CONNECT</p>
+<p>Autorise l'utilisateur à se connecter à la base indiquée. Ce droit est vérifié à la connexion (en plus de la vérification des restrictions imposées par pg_hba.conf).</p>
+<p>TEMPORARY, TEMP</p>
+<p>Autorise la création de tables temporaires lors de l'utilisation de la base de données spécifiée.</p>
+<p>EXECUTE</p>
+<p>Autorise l'utilisation de la fonction indiquée et l'utilisation de tout opérateur défini sur cette fonction. C'est le seul type de droit applicable aux fonctions. (Cette syntaxe fonctionne aussi pour les fonctions d'agrégat)</p>
+<p>ALL PRIVILEGES</p>
+<p>Octroie tous les droits disponibles en une seule opération. Le mot clé PRIVILEGES est optionnel sous PostgreSQL™ mais est requis dans le standard SQL.</p>
+<p>La commande SQL GRANT permet de définir les droits :
+CTRL+C pour copier, CTRL+V pour coller</p>
+<p>--syntaxe générale : </p>
+<p>GRANT { { SELECT | INSERT | UPDATE | DELETE | TRUNCATE | REFERENCES | TRIGGER }</p>
+<pre><code>[, ...] | ALL [ PRIVILEGES ] }
+
+ON { [ TABLE ] table_name [, ...]
+     | ALL TABLES IN SCHEMA schema_name [, ...] }
+
+
+TO role_specification [, ...] [ WITH GRANT OPTION ]
+</code></pre>
+<p>GRANT { { SELECT | INSERT | UPDATE | REFERENCES } ( column_name [, ...] )
+    [, ...] | ALL [ PRIVILEGES ] ( column_name [, ...] ) }
+    ON [ TABLE ] table_name [, ...]
+    TO role_specification [, ...] [ WITH GRANT OPTION ]</p>
+<h2 id="connexions-distantes">Connexions distantes</h2>
+<p>Foreign Data Wrappers</p>
+<p>Le FDW (Foreign Data Wrapper) natif de PostgreSQL postgres_fdw permet d'accéder aux tables à partir de serveurs PostgreSQL distants de manière très transparente.</p>
+<p>Le FDW standard PostgreSQL permet également à la géométrie PostGIS de passer des hôtes distants aux hôtes locaux, ce qui est très pratique.</p>
+<p>Données externes présentées comme des tables ;</p>
+<p>En lecture/écriture (si supporté par le driver et à partir de PostgreSQL 9.3) :</p>
+<pre><code>PostgreSQL, Oracle, MySQL (lecture/écriture)
+
+fichier CSV, fichier fixe (en lecture)
+
+ODBC, JDBC, Multicorn
+
+CouchDB, Redis (NoSQL)
+</code></pre>
+<pre><code>    --création d'un lien vers la base de données bd_test_postgis
+CREATE SERVER foreign_bd
+        FOREIGN DATA WRAPPER postgres_fdw
+        OPTIONS (host 'localhost', port '5434', dbname 'bd_test_postgis');
+--associer un utilisateur de la base de données distant à un utilisateur en local
+CREATE USER MAPPING FOR postgres --utilisateur local
+        SERVER foreign_bd
+        OPTIONS (user 'postgres', password 'postgres'); --utilisateur distant
+--création d'un table ayant la même structure que la table distante     
+CREATE FOREIGN TABLE foreign_parkings (
+    osm_id integer NOT NULL,
+    date_heure timestamp without time zone,
+    nom character varying ,
+    type_obj character varying,
+    xcoord double precision,
+    ycoord double precision,
+    geom geometry(Point,2154)
+)
+    SERVER foreign_bd
+        OPTIONS (schema_name 'parkings', table_name 't_parking');
+select * from foreign_parkings;
+
+</code></pre>
+<h1 id="conseil">conseil</h1>
+<p>L'accès aux données des tables étrangères est plus lent et donc réservées à des accès intermittents (impossible de créer un index sur une table étrangère).</p>
+<p>Il peut être pertinent d'encapsuler les tables distantes dans des vues matérialisées qui stockent les données en local.</p>
+<h2 id="un-fdw-sur-un-wfs">Un FDW sur un WFS</h2>
+<pre><code>Jouons avec les données de l'INPN =&gt; http://ws.carmencarto.fr/WFS/119/fxx_inpn
+
+Extension
+
+En pré-requis, il faut que l'extension soit ajoutée (ça tombe bien nous l'avions prévue dans notre template).
+
+CREATE EXTENSION IF NOT EXISTS ogr_fdw;
+
+Création du serveur
+
+DROP SERVER IF EXISTS fdw_ogr_inpn_metropole;
+
+CREATE SERVER fdw_ogr_inpn_metropole
+
+FOREIGN DATA WRAPPER ogr_fdwOPTIONS (
+
+datasource 'WFS:http://ws.carmencarto.fr/WFS/119/fxx_inpn?',
+
+format 'WFS'
+
+);
+
+Création d'un schéma dédié
+
+CREATE SCHEMA IF NOT EXISTS inpn_metropole;
+
+Récupération de l'ensemble des couches WFS comme des tables dans le schéma inpn_metropole
+
+IMPORT FOREIGN SCHEMA ogr_all
+
+FROM SERVER fdw_ogr_inpn_metropoleINTO inpn_metropoleOPTIONS (
+
+-- mettre le nom des tables en minuscule et sans caractères bizarres
+
+launder_table_names 'true',
+
+-- mettre le nom des champs en minuscule
+
+launder_column_names 'true');
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../edc/" class="btn btn-neutral float-left" title="Etude des cas"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pra/" class="btn btn-neutral float-right" title="cas pratique Adm BDD">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../edc/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../pra/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Abdoulhakim Elmi" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>cas pratique Adm BDD - CPGEOM</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "cas pratique Adm BDD";
+        var mkdocs_page_input_path = "pra.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> CPGEOM
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../meta/">Métadonnées</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../edc/">Etude des cas</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admi/">Administration BDD</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">cas pratique Adm BDD</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#verifier-ladresse-ip">Vérifier l'adresse IP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installer-postgresql-linux">Installer PostgreSQL (Linux)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sauvegarder-le-fichier-de-configuration">Sauvegarder le fichier de configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#modifier-la-configuration">Modifier la configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#recharger-le-service">Recharger le service</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#se-connecter-a-postgresql">Se connecter à PostgreSQL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#voir-les-processus-postgresql">Voir les processus PostgreSQL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installer-htop">Installer htop</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lancer-htop">Lancer htop</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#desactiver-postgresql">Désactiver PostgreSQL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#voir-le-statut-du-service">Voir le statut du service</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nettoyer-le-terminal">Nettoyer le terminal</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../exorole/">Exo correction</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CPGEOM</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">cas pratique Adm BDD</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pratique-commandes">Pratique (Commandes)</h1>
+<h2 id="verifier-ladresse-ip">Vérifier l'adresse IP</h2>
+<pre><code>ipconfig
+</code></pre>
+<h2 id="installer-postgresql-linux">Installer PostgreSQL (Linux)</h2>
+<pre><code>sudo apt install postgresql
+</code></pre>
+<h2 id="sauvegarder-le-fichier-de-configuration">Sauvegarder le fichier de configuration</h2>
+<pre><code>sudo cp /etc/postgresql/16/main/pg_hba.conf /etc/postgresql/16/main/pg_hba_ini.conf
+</code></pre>
+<h2 id="modifier-la-configuration">Modifier la configuration</h2>
+<pre><code>sudo nano /etc/postgresql/16/main/pg_hba.conf
+</code></pre>
+<h2 id="recharger-le-service">Recharger le service</h2>
+<pre><code>sudo systemctl reload postgresql.service
+</code></pre>
+<h2 id="se-connecter-a-postgresql">Se connecter à PostgreSQL</h2>
+<pre><code>psql -U postgres -d postgres
+</code></pre>
+<h2 id="voir-les-processus-postgresql">Voir les processus PostgreSQL</h2>
+<pre><code>ps aux | grep postgres
+</code></pre>
+<h2 id="installer-htop">Installer htop</h2>
+<pre><code>sudo apt install htop
+</code></pre>
+<h2 id="lancer-htop">Lancer htop</h2>
+<pre><code>htop
+</code></pre>
+<h2 id="desactiver-postgresql">Désactiver PostgreSQL</h2>
+<pre><code>sudo systemctl disable postgresql
+</code></pre>
+<h2 id="voir-le-statut-du-service">Voir le statut du service</h2>
+<pre><code>sudo systemctl status postgresql.service
+</code></pre>
+<h2 id="nettoyer-le-terminal">Nettoyer le terminal</h2>
+<pre><code>clear
+</code></pre>
+<hr />
+<h1 id="methode-sur-windows">Méthode sur Windows</h1>
+<h2 id="mettre-le-service-postgresql-en-demarrage-manuel">Mettre le service PostgreSQL en démarrage manuel</h2>
+<h2 id="creer-un-fichier-bat">Créer un fichier <code>.bat</code></h2>
+<pre><code>@echo off
+net start postgresql-x64-17
+pause
+</code></pre>
+<h2 id="creer-un-raccourci-sur-le-bureau">Créer un raccourci sur le bureau</h2>
+<p>Activer l’option :</p>
+<pre><code>Exécuter en tant qu’administrateur
+</code></pre>
+<h2 id="personnaliser-licone-si-necessaire">Personnaliser l’icône si nécessaire</h2>
+<h1 id="architecture-simplifiee-postgresql">Architecture simplifiée PostgreSQL</h1>
+<pre><code>Client (QGIS / pgAdmin / psql)
+        │
+        ▼
+ PostgreSQL Server
+        │
+        ├── Bases de données
+        │       ├── Tables
+        │       ├── Index
+        │       └── Extensions (PostGIS)
+        │
+        ├── WAL (journaux de transactions)
+        │
+        └── Tablespaces (stockage disque)
+</code></pre>
+<hr />
+<h1 id="1-verification-des-fichiers-postgresql">1. Vérification des fichiers PostgreSQL</h1>
+<p>Les données PostgreSQL sont stockées dans le dossier <strong>data</strong> du serveur.</p>
+<pre><code>sudo ls -lah /var/lib/postgresql/16/main/base/5
+</code></pre>
+<p>Cette commande permet de :</p>
+<ul>
+<li>voir les fichiers des tables</li>
+<li>vérifier leur taille</li>
+<li>vérifier les permissions</li>
+</ul>
+<hr />
+<h1 id="2-connexion-au-serveur-postgresql">2. Connexion au serveur PostgreSQL</h1>
+<p>Connexion à une base distante :</p>
+<pre><code>psql -h 192.168.10.1 -p 15432 -U editeur -d abdoulhakim
+</code></pre>
+<p>Commandes utiles dans l'interface <code>psql</code> :</p>
+<pre><code>\dt
+\dt+
+\q
+</code></pre>
+<p>Explication :</p>
+<table>
+<thead>
+<tr>
+<th>commande</th>
+<th>rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\dt</td>
+<td>liste les tables</td>
+</tr>
+<tr>
+<td>\dt+</td>
+<td>affiche les tables avec leur taille</td>
+</tr>
+<tr>
+<td>\q</td>
+<td>quitter psql</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="3-gestion-du-service-postgresql">3. Gestion du service PostgreSQL</h1>
+<p>Vérifier l'état du serveur :</p>
+<pre><code>sudo systemctl status postgresql.service
+</code></pre>
+<p>Démarrer PostgreSQL :</p>
+<pre><code>sudo systemctl start postgresql.service
+</code></pre>
+<p>Connexion locale :</p>
+<pre><code>psql postgres postgres -p 5432
+</code></pre>
+<hr />
+<h1 id="4-creation-dune-base-de-donnees">4. Création d'une base de données</h1>
+<p>Créer une base :</p>
+<pre><code>CREATE DATABASE geobase;
+</code></pre>
+<p>Lister les bases :</p>
+<pre><code>\l
+</code></pre>
+<p>Lister les tablespaces :</p>
+<pre><code>\db
+\db+
+</code></pre>
+<p>Se connecter à une base :</p>
+<pre><code>\c geobase
+</code></pre>
+<p>Installer l'extension spatiale :</p>
+<pre><code>CREATE EXTENSION postgis;
+</code></pre>
+<p>PostGIS permet de <strong>gérer les données géographiques dans PostgreSQL</strong>.</p>
+<hr />
+<h1 id="5-configuration-postgresql">5. Configuration PostgreSQL</h1>
+<p>Avant modification du serveur, on sauvegarde le fichier de configuration.</p>
+<pre><code>sudo cp /etc/postgresql/16/main/postgresql.conf /etc/postgresql/16/main/ini_postgresql.conf
+</code></pre>
+<p>Modifier la configuration :</p>
+<pre><code>sudo nano /etc/postgresql/16/main/postgresql.conf
+</code></pre>
+<p>Configuration générée avec <strong>PGTune</strong> :</p>
+<pre><code>max_connections = 200
+shared_buffers = 4GB
+effective_cache_size = 12GB
+maintenance_work_mem = 2GB
+checkpoint_completion_target = 0.9
+wal_buffers = 16MB
+default_statistics_target = 500
+random_page_cost = 1.1
+effective_io_concurrency = 200
+work_mem = 9892kB
+min_wal_size = 4GB
+max_wal_size = 16GB
+max_worker_processes = 12
+max_parallel_workers = 12
+</code></pre>
+<p>Ces paramètres optimisent :</p>
+<ul>
+<li>la mémoire</li>
+<li>le parallélisme</li>
+<li>les accès disque</li>
+</ul>
+<p>Recharger la configuration :</p>
+<pre><code>sudo systemctl reload postgresql.service
+</code></pre>
+<hr />
+<h1 id="6-gestion-des-tablespaces">6. Gestion des tablespaces</h1>
+<p>Les <strong>tablespaces</strong> permettent de stocker les données PostgreSQL dans un dossier spécifique.</p>
+<p>Création du dossier :</p>
+<pre><code>sudo mkdir -p /srv/tablespace/
+</code></pre>
+<p>Donner les droits à PostgreSQL :</p>
+<pre><code>sudo chown postgres:postgres /srv/tablespace/
+</code></pre>
+<p>Vérifier l'arborescence :</p>
+<pre><code>ls -la /srv
+</code></pre>
+<p>Créer un tablespace :</p>
+<pre><code>CREATE TABLESPACE mine OWNER postgres LOCATION '/srv/tablespace';
+</code></pre>
+<p>Associer une base au tablespace :</p>
+<pre><code>ALTER DATABASE geobase SET TABLESPACE mine;
+</code></pre>
+<p>Vérifier les bases :</p>
+<pre><code>\l+
+</code></pre>
+<hr />
+<h1 id="7-exemple-base-et-donnees">7. Exemple base et données</h1>
+<p>Connexion à une base :</p>
+<pre><code>psql -U postgres -p 5432 -d rugby_top
+</code></pre>
+<p>Afficher les données :</p>
+<pre><code>select * from clubs_rugby;
+</code></pre>
+<hr />
+<h1 id="8-sauvegarde-postgresql">8. Sauvegarde PostgreSQL</h1>
+<p>Sauvegarde d'une base :</p>
+<pre><code>pg_dump -f rugby_sauv -d rugby_top -p 5432 -U postgres
+</code></pre>
+<p>Consulter la sauvegarde :</p>
+<pre><code>less rugby_sauv
+</code></pre>
+<p>Supprimer une base :</p>
+<pre><code>dropdb idgeo_local -U postgres -p 5432
+</code></pre>
+<p>Créer une base :</p>
+<pre><code>psql -U postgres -p5432 -c &quot;CREATE DATABASE idgeo_local&quot;
+</code></pre>
+<p>Restaurer une sauvegarde :</p>
+<pre><code>psql -U postgres -d idgeo_local1 &lt; sauv_idgeo.sql
+</code></pre>
+<hr />
+<h1 id="9-sauvegarde-automatique">9. Sauvegarde automatique</h1>
+<p>Créer un script :</p>
+<pre><code>nano script_sauv_bdd.sh
+</code></pre>
+<p>Script :</p>
+<pre><code>#!/bin/bash
+
+pg_dump -f sauv_bdd_auto.sql -U postgres -p 5432 -d idgeo_local1
+</code></pre>
+<p>Rendre le script exécutable :</p>
+<pre><code>chmod a+x script_sauv_bdd.sh
+</code></pre>
+<p>Planifier avec cron :</p>
+<pre><code>crontab -e
+</code></pre>
+<pre><code># m h  dom mon dow   command
+57 * * * * /home/idgeo/script_sauv_bdd.sh
+</code></pre>
+<p>Cela permet de <strong>sauvegarder automatiquement la base toutes les heures</strong>.</p>
+<hr />
+<h1 id="10-sauvegarde-complete-du-serveur">10. Sauvegarde complète du serveur</h1>
+<p>Démarrer PostgreSQL :</p>
+<pre><code>sudo service postgresql start
+</code></pre>
+<p>Importer une sauvegarde complète :</p>
+<pre><code>psql -U postgres -p 5432 &lt; /mnt/d/cours/dump_all_serveur_distant.sql
+</code></pre>
+<p>Vérifier les bases :</p>
+<pre><code>\l+
+</code></pre>
+<p>Se connecter :</p>
+<pre><code>\c abdoulhakim
+</code></pre>
+<p>Lister les tables :</p>
+<pre><code>\dt
+</code></pre>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../admi/" class="btn btn-neutral float-left" title="Administration BDD"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../exorole/" class="btn btn-neutral float-right" title="Exo correction">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../admi/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../exorole/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

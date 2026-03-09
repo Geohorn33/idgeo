@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Abdoulhakim Elmi" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Exo correction - CPGEOM</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exo correction";
+        var mkdocs_page_input_path = "exorole.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> CPGEOM
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../meta/">Métadonnées</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../edc/">Etude des cas</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admi/">Administration BDD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pra/">cas pratique Adm BDD</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Exo correction</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-creation-de-la-base-template_gis">1. Création de la base template_gis</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CPGEOM</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Exo correction</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="postgresql-postgis-gestion-des-roles-et-des-droits-correction-exercice">PostgreSQL / PostGIS — Gestion des rôles et des droits (Correction exercice)</h1>
+<h2 id="1-creation-de-la-base-template_gis">1. Création de la base <code>template_gis</code></h2>
+<p>La base <code>template_gis</code> est utilisée comme <strong>modèle</strong> pour créer d'autres bases SIG.</p>
+<p>Elle contient plusieurs extensions nécessaires aux projets géomatiques :</p>
+<ul>
+<li><code>postgis</code></li>
+<li><code>hstore</code></li>
+<li><code>pgrouting</code></li>
+<li><code>postgres_fdw</code></li>
+<li><code>ogr_fdw</code></li>
+</ul>
+<p>Vérification de l'installation de PostGIS :</p>
+<pre><code class="language-sql">SELECT PostGIS_full_version();
+</code></pre>
+<p>La base est créée avec un <strong>superutilisateur</strong>, car certaines extensions nécessitent les droits <code>SUPERUSER</code>.</p>
+<p>Ensuite les administrateurs peuvent créer de nouvelles bases à partir de ce <strong>template</strong>.</p>
+<p>Bonne pratique :</p>
+<blockquote>
+<p>Il n'est pas recommandé de travailler directement dans le schéma <code>public</code>.</p>
+</blockquote>
+<hr />
+<h1 id="2-creation-du-role-groupe-admin">2. Création du rôle groupe admin</h1>
+<p>Rôle groupe sans connexion :</p>
+<pre><code class="language-sql">CREATE ROLE admin
+NOLOGIN
+NOSUPERUSER
+INHERIT
+NOCREATEDB
+NOCREATEROLE
+NOREPLICATION;
+</code></pre>
+<p>Ce rôle sert à <strong>gérer les privilèges administrateurs</strong>.</p>
+<hr />
+<h1 id="3-creation-du-role-stagiaire">3. Création du rôle stagiaire</h1>
+<p>Utilisateur avec connexion appartenant au groupe <code>admin</code>.</p>
+<pre><code class="language-sql">CREATE ROLE stagiaire WITH
+LOGIN
+NOSUPERUSER
+INHERIT
+NOCREATEDB
+NOCREATEROLE
+NOREPLICATION
+PASSWORD 'motdepasse';
+
+GRANT admin TO stagiaire;
+</code></pre>
+<p>Le rôle <code>stagiaire</code> devient membre du groupe <strong>admin</strong>.</p>
+<hr />
+<h1 id="4-creation-de-la-base-demo_role">4. Création de la base <code>demo_role</code></h1>
+<p>La base est créée à partir du template <code>template_gis</code>.</p>
+<pre><code class="language-sql">CREATE DATABASE demo_role
+WITH TEMPLATE template_gis
+OWNER admin;
+</code></pre>
+<hr />
+<h1 id="5-creation-des-schemas">5. Création des schémas</h1>
+<p>Deux schémas sont créés :</p>
+<ul>
+<li><code>production</code></li>
+<li><code>consultation</code></li>
+</ul>
+<pre><code class="language-sql">CREATE SCHEMA production AUTHORIZATION stagiaire;
+
+CREATE SCHEMA consultation AUTHORIZATION stagiaire;
+</code></pre>
+<hr />
+<h1 id="6-chargement-des-donnees">6. Chargement des données</h1>
+<p>Les données sont importées dans les schémas correspondants :</p>
+<table>
+<thead>
+<tr>
+<th>Donnée</th>
+<th>Schéma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>communes</td>
+<td>consultation</td>
+</tr>
+<tr>
+<td>territoires</td>
+<td>production</td>
+</tr>
+<tr>
+<td>pav</td>
+<td>production</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="7-creation-des-roles-fonctionnels">7. Création des rôles fonctionnels</h1>
+<h2 id="71-role-ecrivains">7.1 Rôle <code>ecrivains</code></h2>
+<p>Les écrivains peuvent <strong>modifier les données</strong>.</p>
+<pre><code class="language-sql">CREATE ROLE ecrivains WITH
+NOLOGIN
+NOSUPERUSER
+INHERIT
+NOCREATEDB
+NOCREATEROLE
+NOREPLICATION;
+</code></pre>
+<hr />
+<h2 id="72-role-lecteurs">7.2 Rôle <code>lecteurs</code></h2>
+<p>Les lecteurs ont <strong>un accès lecture uniquement</strong>.</p>
+<pre><code class="language-sql">CREATE ROLE lecteurs WITH
+NOLOGIN
+NOSUPERUSER
+INHERIT
+NOCREATEDB
+NOCREATEROLE
+NOREPLICATION;
+</code></pre>
+<hr />
+<h1 id="8-creation-des-utilisateurs">8. Création des utilisateurs</h1>
+<h2 id="81-utilisateur-adama">8.1 Utilisateur <code>adama</code></h2>
+<p>Adama appartient aux rôles <strong>ecrivains</strong> et <strong>lecteurs</strong>.</p>
+<pre><code class="language-sql">CREATE ROLE adama WITH
+LOGIN
+NOSUPERUSER
+INHERIT
+NOCREATEDB
+NOCREATEROLE
+NOREPLICATION
+NOBYPASSRLS;
+
+GRANT ecrivains, lecteurs TO adama;
+</code></pre>
+<hr />
+<h2 id="82-utilisateur-bakari">8.2 Utilisateur <code>bakari</code></h2>
+<p>Bakari appartient uniquement au rôle <strong>lecteurs</strong>.</p>
+<pre><code class="language-sql">CREATE ROLE bakari WITH
+LOGIN
+NOSUPERUSER
+INHERIT
+NOCREATEDB
+NOCREATEROLE
+NOREPLICATION
+NOBYPASSRLS;
+
+GRANT lecteurs TO bakari;
+</code></pre>
+<hr />
+<h1 id="9-attribution-des-droits-sur-les-schemas">9. Attribution des droits sur les schémas</h1>
+<h2 id="schema-consultation">Schéma <code>consultation</code></h2>
+<p>Tous les utilisateurs ont <strong>uniquement un accès lecture</strong>.</p>
+<pre><code class="language-sql">GRANT USAGE ON SCHEMA consultation TO lecteurs;
+GRANT SELECT ON ALL TABLES IN SCHEMA consultation TO lecteurs;
+</code></pre>
+<hr />
+<h2 id="schema-production">Schéma <code>production</code></h2>
+<h3 id="droits-pour-les-ecrivains">Droits pour les écrivains</h3>
+<p>Les écrivains peuvent :</p>
+<ul>
+<li>créer des tables</li>
+<li>modifier les données</li>
+<li>supprimer des données</li>
+</ul>
+<pre><code class="language-sql">GRANT USAGE ON SCHEMA production TO ecrivains;
+
+GRANT INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA production
+TO ecrivains;
+</code></pre>
+<hr />
+<h3 id="droits-pour-les-lecteurs">Droits pour les lecteurs</h3>
+<p>Les lecteurs peuvent seulement consulter les données.</p>
+<pre><code class="language-sql">GRANT USAGE ON SCHEMA production TO lecteurs;
+
+GRANT SELECT
+ON ALL TABLES IN SCHEMA production
+TO lecteurs;
+</code></pre>
+<hr />
+<h1 id="10-droits-sur-les-tables">10. Droits sur les tables</h1>
+<p>Exemple sur la table :</p>
+<p><code>points_dapport_volontaire_dechets_et_moyens_techniques</code></p>
+<h3 id="droits-ecrivains">Droits écrivains</h3>
+<pre><code class="language-sql">GRANT INSERT, UPDATE, DELETE
+ON production.points_dapport_volontaire_dechets_et_moyens_techniques
+TO ecrivains;
+</code></pre>
+<hr />
+<h3 id="droits-lecteurs">Droits lecteurs</h3>
+<pre><code class="language-sql">GRANT SELECT
+ON production.points_dapport_volontaire_dechets_et_moyens_techniques
+TO lecteurs;
+</code></pre>
+<hr />
+<h1 id="11-droits-par-defaut">11. Droits par défaut</h1>
+<p>Pour que les <strong>nouvelles tables héritent automatiquement des droits</strong> :</p>
+<pre><code class="language-sql">ALTER DEFAULT PRIVILEGES IN SCHEMA production
+GRANT SELECT ON TABLES TO lecteurs;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA production
+GRANT INSERT, UPDATE, DELETE ON TABLES TO ecrivains;
+</code></pre>
+<hr />
+<h1 id="12-test-dans-qgis">12. Test dans QGIS</h1>
+<p>Connexion avec <strong>adama</strong></p>
+<p>Résultat :</p>
+<ul>
+<li>accès aux schémas</li>
+<li>modification des tables</li>
+<li>création de nouvelles tables</li>
+<li>édition des données</li>
+</ul>
+<p>Connexion avec <strong>bakari</strong></p>
+<p>Résultat :</p>
+<ul>
+<li>accès en lecture uniquement</li>
+</ul>
+<hr />
+<h1 id="13-import-dune-table-avec-stagiaire">13. Import d'une table avec <code>stagiaire</code></h1>
+<p>Import de :</p>
+<pre><code>territoire_tm.shp
+</code></pre>
+<p>dans le schéma :</p>
+<pre><code>production
+</code></pre>
+<p>Ensuite connexion avec <strong>adama</strong> pour vérifier les droits :</p>
+<ul>
+<li>ajout</li>
+<li>modification</li>
+<li>suppression</li>
+</ul>
+<hr />
+<h1 id="14-import-des-donnees-wfs-avec-ogr_fdw">14. Import des données WFS avec <code>ogr_fdw</code></h1>
+<p>Création du serveur FDW :</p>
+<pre><code class="language-sql">CREATE SERVER fdw_ogr_inpn_metropole
+FOREIGN DATA WRAPPER ogr_fdw
+OPTIONS (
+datasource 'WFS:http://ws.carmencarto.fr/WFS/119/fxx_inpn?',
+format 'WFS'
+);
+</code></pre>
+<p>Création du schéma :</p>
+<pre><code class="language-sql">CREATE SCHEMA IF NOT EXISTS inpn_metropole;
+</code></pre>
+<p>Import des tables :</p>
+<pre><code class="language-sql">IMPORT FOREIGN SCHEMA ogr_all
+FROM SERVER fdw_ogr_inpn_metropole
+INTO inpn_metropole
+OPTIONS (
+launder_table_names 'true',
+launder_column_names 'true'
+);
+</code></pre>
+<p>Résultat :</p>
+<p><strong>35 tables importées dans PostgreSQL</strong>.</p>
+<hr />
+<h1 id="conclusion">Conclusion</h1>
+<p>Cette architecture permet :</p>
+<ul>
+<li>une <strong>gestion claire des droits</strong></li>
+<li>une <strong>séparation production / consultation</strong></li>
+<li>une <strong>gestion par rôles (RBAC)</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Rôle</th>
+<th>Accès</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecrivains</td>
+<td>lecture + écriture</td>
+</tr>
+<tr>
+<td>lecteurs</td>
+<td>lecture seule</td>
+</tr>
+<tr>
+<td>adama</td>
+<td>écrivain + lecteur</td>
+</tr>
+<tr>
+<td>bakari</td>
+<td>lecteur</td>
+</tr>
+</tbody>
+</table>
+<p>Cette organisation est une <strong>bonne pratique pour les bases de données SIG professionnelles</strong>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../pra/" class="btn btn-neutral float-left" title="cas pratique Adm BDD"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../pra/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
