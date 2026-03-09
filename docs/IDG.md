@@ -21,7 +21,7 @@ Ils permettent la **gestion et la diffusion de l’information géographique** :
 
 ---
 
-# Historique
+## Historique
 Les **IDG apparaissent dans les années 1990** avec :
 - le développement des **SIG**
 - l’essor de **l’Internet**
@@ -33,7 +33,7 @@ Objectif :
 
 ---
 
-# Approches des IDG
+## Approches des IDG
 
 ## Approche par composantes
 Décrit les éléments techniques :
