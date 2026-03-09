@@ -35,7 +35,7 @@ Objectif :
 
 ## Approches des IDG
 
-### Approche par composantes
+Approche par composantes
 Décrit les éléments techniques :
 - données
 - métadonnées
@@ -43,14 +43,16 @@ Décrit les éléments techniques :
 - logiciels
 - acteurs
 
-# Approche réseau
+Approche réseau :
+
 Considère l’IDG comme **un réseau d’acteurs qui coopèrent pour partager les données**.
 
 ---
 
 ## Typologies des IDG
 
-### IDG généraliste (territoriale)
+IDG généraliste (territoriale):
+
 Diffuse des données **multi-thématiques liées à un territoire**.
 
 Exemples :
