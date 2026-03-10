@@ -251,3 +251,32 @@ Permet de :
 - diffuser les bonnes pratiques
 - améliorer l’utilisation des données
 
+---
+
+## Mise en œuvre d’une solution de catalogage et de diffusion de données (OpenIDG)
+
+**Démarche complète**
+
+| Étape | Description | Actions principales |
+|------|-------------|--------------------|
+| **1. Diagnostic** | Comprendre la situation actuelle | Veille technologique, analyse de l’offre concurrente, recherche d’outils existants, benchmarking, identifier les failles, analyser les usages technologiques |
+| **2. Diagnostic interne** | Analyser l’organisation interne | Analyse de l’existant, réinterroger les usages, recueillir l’avis des utilisateurs, questionnaire aux utilisateurs, bilan quantitatif |
+| **3. Analyse des ressources internes** | Identifier les moyens disponibles | Analyse des ressources humaines, moyens techniques, moyens organisationnels |
+| **4. Analyse du besoin** | Définir clairement les besoins | Réidentifier les besoins, consultation des archives, définir les profils utilisateurs, méthode QQOQCP, analyse stratégique (hébergement) |
+| **5. Analyse de l’existant par rapport aux besoins** | Comparer les solutions disponibles | Liste des outils existants, étude comparative, amélioration du benchmark |
+| **6. Validation** | Valider la solution retenue | Choix de l’outil, création du cahier des charges, validation par le comité d’administration, informer les membres |
+| **7. Procédure d’achat** | Acquisition de la solution | Mise en concurrence, planification |
+| **8. Déploiement** | Mise en production de la solution | Former les utilisateurs, accompagner les équipes, informer des évolutions, mettre en place les services (CSW, WMS, WFS), diffusion des données |
+
+---
+
+## Résumé de la démarche
+
+1. Diagnostic  
+2. Diagnostic interne  
+3. Analyse des ressources internes  
+4. Analyse du besoin  
+5. Analyse de l’existant  
+6. Validation  
+7. Procédure d’achat  
+8. Déploiement
