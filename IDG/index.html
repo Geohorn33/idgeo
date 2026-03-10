@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Abdoulhakim Elmi" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>IDG - CPGEOM</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "IDG";
+        var mkdocs_page_input_path = "IDG.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> CPGEOM
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../meta/">Métadonnées</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../edc/">Etude des cas</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../admi/">Administration BDD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pra/">cas pratique Adm BDD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../exorole/">Exo correction</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">IDG</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#definition">Définition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#historique">Historique</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#approches-des-idg">Approches des IDG</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#typologies-des-idg">Typologies des IDG</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#idg-thematique">IDG thématique</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#services-inspire">Services INSPIRE</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#standards-et-normes">Standards et Normes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interoperabilite">Interopérabilité</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#principes-fair">Principes FAIR</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#solutions-de-diffusion-de-donnees">Solutions de diffusion de données</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#approches-techniques">Approches techniques</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gestion-des-acces">Gestion des accès</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cycle-de-vie-pdca">Cycle de vie PDCA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#analyse-des-risques">Analyse des risques</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methode-qqoqcp">Méthode QQOQCP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etapes-pour-repondre-a-un-besoin">Étapes pour répondre à un besoin</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#systeme-dinformation-si">Système d’Information (SI)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#formation-et-sensibilisation">Formation et sensibilisation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mise-en-uvre-dune-solution-de-catalogage-et-de-diffusion-de-donnees-openidg">Mise en œuvre d’une solution de catalogage et de diffusion de données (OpenIDG)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#resume-de-la-demarche">Résumé de la démarche</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CPGEOM</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">IDG</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cours-infrastructure-de-donnees-geographiques-idg">Cours – Infrastructure de Données Géographiques (IDG)</h1>
+<h2 id="definition">Définition</h2>
+<p>Une <strong>Infrastructure de Données Géographiques (IDG)</strong> est une organisation reposant sur :
+- des <strong>accords de partage</strong>
+- une <strong>coordination entre les membres</strong>
+- des <strong>systèmes informatiques</strong></p>
+<p>Ces systèmes intègrent plusieurs services :
+- catalogues
+- serveurs
+- logiciels
+- données
+- applications
+- pages web</p>
+<p>Ils permettent la <strong>gestion et la diffusion de l’information géographique</strong> :
+- cartes
+- orthophotoplans
+- images satellites</p>
+<hr />
+<h2 id="historique">Historique</h2>
+<p>Les <strong>IDG apparaissent dans les années 1990</strong> avec :
+- le développement des <strong>SIG</strong>
+- l’essor de <strong>l’Internet</strong></p>
+<p>Objectif :
+- faciliter l’accès aux données
+- échanger les informations
+- partager les données géographiques</p>
+<hr />
+<h2 id="approches-des-idg">Approches des IDG</h2>
+<p><strong>Approche par composantes</strong> 
+Décrit les éléments techniques :
+- données
+- métadonnées
+- services
+- logiciels
+- acteurs</p>
+<p><strong>Approche réseau</strong> :</p>
+<p>Considère l’IDG comme <strong>un réseau d’acteurs qui coopèrent pour partager les données</strong>.</p>
+<hr />
+<h2 id="typologies-des-idg">Typologies des IDG</h2>
+<p>IDG généraliste (territoriale):</p>
+<p>Diffuse des données <strong>multi-thématiques liées à un territoire</strong>.</p>
+<p>Exemples :
+- région
+- département
+- pays</p>
+<h2 id="idg-thematique">IDG thématique</h2>
+<p>Se concentre sur <strong>un thème spécifique</strong>.</p>
+<p>Exemples :
+- littoral
+- risques
+- santé</p>
+<hr />
+<h2 id="services-inspire">Services INSPIRE</h2>
+<ul>
+<li><strong>Service de recherche</strong> → trouver les données (CSW)</li>
+<li><strong>Service de consultation</strong> → visualiser les données (WMS)</li>
+<li><strong>Service de téléchargement</strong> → récupérer les données (WFS)</li>
+<li><strong>Service de transformation</strong> → adapter les données aux standards</li>
+<li><strong>Service d’appel</strong> → exécuter un traitement</li>
+</ul>
+<hr />
+<h2 id="standards-et-normes">Standards et Normes</h2>
+<p><strong>Norme</strong>
+Règle officielle définie par un organisme de normalisation.</p>
+<p>Exemple :
+- ISO</p>
+<p><strong>Standard</strong>
+Spécification technique permettant l’interopérabilité.</p>
+<p>Exemples :
+- WMS
+- WFS
+- CSW</p>
+<hr />
+<h2 id="interoperabilite">Interopérabilité</h2>
+<p>Permet aux systèmes d’échanger des données.</p>
+<p><strong>Champ sémantique</strong>
+Définit :
+- le sens
+- la structure des informations</p>
+<p><strong>Champ géographique</strong>
+Définit :
+- le système géodésique
+- la projection cartographique</p>
+<p>Exemples :
+- WGS84
+- Lambert 93</p>
+<p><strong>Champ informatique</strong>
+Concerne les échanges entre systèmes :</p>
+<ul>
+<li>protocoles réseau</li>
+<li>logiciels</li>
+<li>bases de données</li>
+</ul>
+<hr />
+<h2 id="principes-fair">Principes FAIR</h2>
+<p><strong>F – Findable</strong><br />
+Les données doivent être faciles à trouver.</p>
+<p><strong>A – Accessible</strong><br />
+Les données doivent être accessibles.</p>
+<p><strong>I – Interoperable</strong><br />
+Les données doivent être compatibles avec d’autres systèmes.</p>
+<p><strong>R – Reusable</strong><br />
+Les données doivent être réutilisables.</p>
+<hr />
+<h2 id="solutions-de-diffusion-de-donnees">Solutions de diffusion de données</h2>
+<p><strong>Solutions orientées géographiques</strong> 
+- Prodige
+- GeoRechestra
+- Isogeo
+- OneGeoSuite</p>
+<p><strong>Plateformes Open Data</strong>
+- Dataverse
+- CKAN
+- uData
+- OpenDataSoft
+- Koumoul</p>
+<hr />
+<h2 id="approches-techniques">Approches techniques</h2>
+<p><strong>SaaS</strong> :</p>
+<p>Solution hébergée dans le <strong>cloud par un fournisseur</strong>.</p>
+<p><strong>Hybride</strong> :</p>
+<p>Combinaison :
+- cloud
+- infrastructure interne</p>
+<p><strong>Auto-gérée</strong> :</p>
+<ul>
+<li>
+<p>Internalisation
+Infrastructure gérée <strong>entièrement en interne</strong>.</p>
+</li>
+<li>
+<p>Hébergement délégué
+Serveur externe mais <strong>gestion interne</strong>.</p>
+</li>
+<li>
+<p>Externalisation
+Le prestataire <strong>gère toute l’infrastructure</strong>.</p>
+</li>
+</ul>
+<hr />
+<h2 id="gestion-des-acces">Gestion des accès</h2>
+<p>Définir :
+- qui peut <strong>consulter</strong>
+- qui peut <strong>modifier</strong>
+- qui peut <strong>administrer</strong></p>
+<hr />
+<h2 id="cycle-de-vie-pdca">Cycle de vie PDCA</h2>
+<ul>
+<li><strong>Plan</strong> → planifier</li>
+<li><strong>Do</strong> → réaliser</li>
+<li><strong>Check</strong> → vérifier</li>
+<li><strong>Act</strong> → améliorer</li>
+</ul>
+<hr />
+<h2 id="analyse-des-risques">Analyse des risques</h2>
+<ol>
+<li>identifier les risques</li>
+<li>analyser les risques</li>
+<li>traiter les risques</li>
+<li>suivre et contrôler</li>
+</ol>
+<hr />
+<h2 id="methode-qqoqcp">Méthode QQOQCP</h2>
+<ul>
+<li>Qui ?</li>
+<li>Quoi ?</li>
+<li>Où ?</li>
+<li>Quand ?</li>
+<li>Comment ?</li>
+<li>Pourquoi ?</li>
+</ul>
+<p>Permet <strong>d’identifier un besoin</strong>.</p>
+<hr />
+<h2 id="etapes-pour-repondre-a-un-besoin">Étapes pour répondre à un besoin</h2>
+<ol>
+<li>identifier le besoin</li>
+<li>analyser le besoin</li>
+<li>concevoir la solution</li>
+<li>mettre en œuvre</li>
+<li>tester et valider</li>
+<li>déployer la solution</li>
+</ol>
+<hr />
+<h2 id="systeme-dinformation-si">Système d’Information (SI)</h2>
+<p>Le SI repose sur :
+- <strong>structuration des données</strong>
+- <strong>cartographie</strong>
+- <strong>documentation</strong>
+- <strong>évolution du système</strong></p>
+<hr />
+<h2 id="formation-et-sensibilisation">Formation et sensibilisation</h2>
+<p>Permet de :
+- former les utilisateurs
+- diffuser les bonnes pratiques
+- améliorer l’utilisation des données</p>
+<hr />
+<h2 id="mise-en-uvre-dune-solution-de-catalogage-et-de-diffusion-de-donnees-openidg">Mise en œuvre d’une solution de catalogage et de diffusion de données (OpenIDG)</h2>
+<p><strong>Démarche complète</strong></p>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Description</th>
+<th>Actions principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Diagnostic</strong></td>
+<td>Comprendre la situation actuelle</td>
+<td>Veille technologique, analyse de l’offre concurrente, recherche d’outils existants, benchmarking, identifier les failles, analyser les usages technologiques</td>
+</tr>
+<tr>
+<td><strong>2. Diagnostic interne</strong></td>
+<td>Analyser l’organisation interne</td>
+<td>Analyse de l’existant, réinterroger les usages, recueillir l’avis des utilisateurs, questionnaire aux utilisateurs, bilan quantitatif</td>
+</tr>
+<tr>
+<td><strong>3. Analyse des ressources internes</strong></td>
+<td>Identifier les moyens disponibles</td>
+<td>Analyse des ressources humaines, moyens techniques, moyens organisationnels</td>
+</tr>
+<tr>
+<td><strong>4. Analyse du besoin</strong></td>
+<td>Définir clairement les besoins</td>
+<td>Réidentifier les besoins, consultation des archives, définir les profils utilisateurs, méthode QQOQCP, analyse stratégique (hébergement)</td>
+</tr>
+<tr>
+<td><strong>5. Analyse de l’existant par rapport aux besoins</strong></td>
+<td>Comparer les solutions disponibles</td>
+<td>Liste des outils existants, étude comparative, amélioration du benchmark</td>
+</tr>
+<tr>
+<td><strong>6. Validation</strong></td>
+<td>Valider la solution retenue</td>
+<td>Choix de l’outil, création du cahier des charges, validation par le comité d’administration, informer les membres</td>
+</tr>
+<tr>
+<td><strong>7. Procédure d’achat</strong></td>
+<td>Acquisition de la solution</td>
+<td>Mise en concurrence, planification</td>
+</tr>
+<tr>
+<td><strong>8. Déploiement</strong></td>
+<td>Mise en production de la solution</td>
+<td>Former les utilisateurs, accompagner les équipes, informer des évolutions, mettre en place les services (CSW, WMS, WFS), diffusion des données</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="resume-de-la-demarche">Résumé de la démarche</h2>
+<ol>
+<li>Diagnostic  </li>
+<li>Diagnostic interne  </li>
+<li>Analyse des ressources internes  </li>
+<li>Analyse du besoin  </li>
+<li>Analyse de l’existant  </li>
+<li>Validation  </li>
+<li>Procédure d’achat  </li>
+<li>Déploiement</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../exorole/" class="btn btn-neutral float-left" title="Exo correction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../exorole/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
